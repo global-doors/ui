@@ -113,18 +113,18 @@ const RegisterPage = () => {
                 {!!errorMsg && <Alert severity="error">{errorMsg}</Alert>}
 
                 <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-                    <RHFTextField label="First name" name="firstName"/>
-                    <RHFTextField label="Last name" name="lastName"/>
+                    <RHFTextField label="First name" name="firstName" />
+                    <RHFTextField label="Last name" name="lastName" />
                 </Stack>
 
-                <RHFTextField label="Email address" name="email"/>
+                <RHFTextField label="Email address" name="email" />
 
                 <RHFTextField
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton edge="end" onClick={password.onToggle}>
-                                    <Iconify icon={password.value ? "solar:eye-bold" : "solar:eye-closed-bold"}/>
+                                    <Iconify icon={password.value ? "solar:eye-bold" : "solar:eye-closed-bold"} />
                                 </IconButton>
                             </InputAdornment>
                         )

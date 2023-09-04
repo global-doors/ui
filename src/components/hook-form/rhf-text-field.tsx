@@ -25,6 +25,7 @@ const RHFTextField = ({ name, helperText, type, ...other }: Props) => {
                             field.onChange(event.target.value);
                         }
                     }}
+                    size="small"
                     type={type}
                     value={type === "number" && field.value === 0 ? "" : field.value}
                     {...other}

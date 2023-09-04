@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import { FormProvider as Form, UseFormReturn } from "react-hook-form";
 
 type Props = {
-    children: React.ReactNode;
+    children: ReactNode;
     methods: UseFormReturn<any>;
     onSubmit?: VoidFunction;
 };

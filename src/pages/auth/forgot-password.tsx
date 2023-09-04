@@ -46,10 +46,10 @@ const ForgotPassword = () => {
 
     const renderForm = (
         <Stack alignItems="center" spacing={3}>
-            <RHFTextField label="Email address" name="email"/>
+            <RHFTextField label="Email address" name="email" />
 
             <LoadingButton
-                endIcon={<Iconify icon="eva:arrow-ios-forward-fill"/>}
+                endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
                 fullWidth
                 loading={isSubmitting}
                 size="large"
@@ -70,7 +70,7 @@ const ForgotPassword = () => {
                 }}
                 variant="subtitle2"
             >
-                <Iconify icon="eva:arrow-ios-back-fill" width={16}/>
+                <Iconify icon="eva:arrow-ios-back-fill" width={16} />
                 Return to sign in
             </Link>
         </Stack>
@@ -78,7 +78,7 @@ const ForgotPassword = () => {
 
     const renderHead = (
         <>
-            <PasswordIcon sx={{ height: 96 }}/>
+            <PasswordIcon sx={{ height: 96 }} />
 
             <Stack spacing={1} sx={{ my: 5 }}>
                 <Typography variant="h3">Forgot your password?</Typography>

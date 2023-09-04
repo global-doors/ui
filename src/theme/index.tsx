@@ -26,7 +26,7 @@ const ThemeProvider = ({ children }: Props) => {
             shadows: shadows("light"),
             customShadows: customShadows("light"),
             typography,
-            shape: { borderRadius: 8 }
+            shape: { borderRadius: 4 }
         }),
         []
     );

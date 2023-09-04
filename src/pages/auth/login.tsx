@@ -76,7 +76,7 @@ const LoginPage = () => {
         <Stack spacing={2.5} sx={{ minWidth: 320 }}>
             {!!errorMsg && <Alert severity="error">{errorMsg}</Alert>}
 
-            <RHFTextField fullWidth label="Email address" name="email"/>
+            <RHFTextField fullWidth label="Email address" name="email" />
 
             <RHFTextField
                 fullWidth
@@ -84,7 +84,7 @@ const LoginPage = () => {
                     endAdornment: (
                         <InputAdornment position="end">
                             <IconButton edge="end" onClick={password.onToggle}>
-                                <Iconify icon={password.value ? "solar:eye-bold" : "solar:eye-closed-bold"}/>
+                                <Iconify icon={password.value ? "solar:eye-bold" : "solar:eye-closed-bold"} />
                             </IconButton>
                         </InputAdornment>
                     )

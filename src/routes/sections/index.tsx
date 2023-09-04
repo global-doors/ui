@@ -9,7 +9,7 @@ export default function Router() {
     return useRoutes([
         {
             path: "/",
-            element: <Navigate replace to={PATH_AFTER_LOGIN}/>
+            element: <Navigate replace to={PATH_AFTER_LOGIN} />
         },
 
         // Auth routes
@@ -22,6 +22,6 @@ export default function Router() {
         ...mainRoutes,
 
         // No match 404
-        { path: "*", element: <Navigate replace to="/404"/> }
+        { path: "*", element: <Navigate replace to="/404" /> }
     ]);
 }

@@ -12,6 +12,9 @@ const dataGrid = (theme: Theme) => {
 
     return {
         MuiDataGrid: {
+            defaultProps: {
+                density: "compact"
+            },
             styleOverrides: {
                 root: {
                     borderRadius: 0,
@@ -55,7 +58,14 @@ const dataGrid = (theme: Theme) => {
                 },
                 columnHeaders: {
                     borderRadius: 0,
-                    backgroundColor: theme.palette.background.neutral
+                    backgroundColor: theme.palette.background.neutral,
+                    paddingTop: theme.spacing(2),
+                    paddingBottom: theme.spacing(2)
+                },
+                columnHeaderTitle: {
+                    color: theme.palette.text.secondary,
+                    fontWeight: theme.typography.fontWeightBold,
+                    paddingY: 10
                 },
                 panelHeader: {
                     padding: theme.spacing(2)
