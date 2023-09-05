@@ -77,7 +77,7 @@ export const typography = {
         fontSize: pxToRem(16)
     },
     subtitle2: {
-        fontWeight: 600,
+        fontWeight: 500,
         lineHeight: 22 / 14,
         fontSize: pxToRem(14)
     },

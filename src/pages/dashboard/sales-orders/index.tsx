@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Button, Card, CardContent, CardHeader, Container, IconButton, Stack } from "@mui/material";
 import { Iconify } from "src/components/iconify";
 import { PageHeader } from "src/components/page-header";
@@ -69,6 +70,8 @@ const Index = () => {
 
     const [showFilters, setShowFilters] = useState<boolean>(false);
     const toggleFilters = () => setShowFilters(!showFilters);
+
+    const navigate = useNavigate();
     return (
 
         <>
@@ -86,8 +89,12 @@ const Index = () => {
                             <Button startIcon={<Iconify icon="solar:export-line-duotone" />} variant="outlined">
                                 Export
                             </Button>
-                            <Button startIcon={<Iconify icon="solar:add-square-line-duotone" />} variant="contained">
-                                New Sales Order
+                            <Button
+                                onClick={() => navigate("/dashboard/sales/add-order")}
+                                startIcon={<Iconify icon="solar:add-square-line-duotone" />}
+                                variant="contained"
+                            >
+                                Add Sales Order
                             </Button>
                         </Stack>
                     }

@@ -24,7 +24,19 @@ const dataGrid = (theme: Theme) => {
                     },
                     [`& .${tablePaginationClasses.toolbar}`]: {
                         height: "auto"
-                    }
+                    },
+                    "& .MuiDataGrid-columnHeaderTitle": {
+                        fontSize: "0.75rem"
+                    },
+                    "& .MuiDataGrid-columnHeaders": {
+                        borderColor: theme.palette.divider,
+                        outline: "none"
+                    },
+                    // eslint-disable-next-line max-len
+                    "& .MuiDataGrid-columnHeader:focus-within, .MuiDataGrid-columnHeader:focus .MuiDataGrid-cell:focus-within, .MuiDataGrid-cell:focus":
+                        {
+                            outline: "none"
+                        }
                 },
                 cell: {
                     borderBottom: `1px dashed ${theme.palette.divider}`
