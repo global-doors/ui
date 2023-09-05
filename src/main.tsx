@@ -13,7 +13,7 @@ const RouterComponent = import.meta.env.PROD ? HashRouter : BrowserRouter;
 
 root.render(
     <HelmetProvider>
-        <RouterComponent basename={import.meta.env.PROD ? "/ui" : undefined}>
+        <RouterComponent>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Suspense>
                     <App />
