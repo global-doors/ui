@@ -3,7 +3,6 @@
   "author": "Global Doors",
   "version": "5.5.0",
   "description": "Global Doors UI",
-  "private": true,
   "homepage": "https://global-doors.github.io/ui",
   "scripts": {
     "dev": "vite",
