@@ -1,8 +1,6 @@
-import {
-    ReactNode, useCallback, useMemo, useState
-} from "react";
+import { ReactNode, useCallback, useMemo, useState } from "react";
 import isEqual from "lodash/isEqual";
-import { useLocalStorage } from "src/hooks/use-local-storage";
+import useLocalStorage from "src/hooks/useLocalStorage";
 
 import { SettingsValueProps } from "../types";
 
@@ -16,7 +14,7 @@ type SettingsProviderProps = {
 };
 
 const SettingsProvider = ({ children, defaultSettings }: SettingsProviderProps) => {
-    const { state, update, reset } = useLocalStorage(STORAGE_KEY, defaultSettings);
+    const [state, update] = useLocalStorage(STORAGE_KEY, defaultSettings);
 
     const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -37,14 +35,13 @@ const SettingsProvider = ({ children, defaultSettings }: SettingsProviderProps) 
             onUpdate: update,
             // Reset
             canReset,
-            onReset: reset,
+            onReset: () => update(null),
             // Drawer
             open: openDrawer,
             onToggle: onToggleDrawer,
             onClose: onCloseDrawer
         }),
         [
-            reset,
             update,
             state,
             canReset,

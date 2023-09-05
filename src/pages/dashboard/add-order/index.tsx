@@ -85,143 +85,153 @@ const AddSalesOrder = () => {
                 </PageHeader>
 
                 <FormProvider methods={methods}>
+                    <Stack spacing={2}>
 
-                    <Card>
-                        <CardContent>
-                            <Stack spacing={2}>
-                                <Typography variant="subtitle1">
-                                    Customer
-                                </Typography>
-                                <Box
-                                    columnGap={2}
-                                    display="grid"
-                                    gridTemplateColumns={{
-                                        xs: "repeat(1, 1fr)",
-                                        md: "repeat(4, 1fr)"
-                                    }}
-                                    rowGap={3}
-                                >
-                                    <RHFTextField label="Customer Code" name="customerCode" />
-                                    <RHFTextField label="Customer Name" name="customerName" />
-                                    <RHFTextField label="Customer Reference" name="customerRef" />
-                                </Box>
-                                <Box
-                                    columnGap={2}
-                                    display="grid"
-                                    gridTemplateColumns={{
-                                        xs: "repeat(1, 1fr)",
-                                        md: "repeat(4, 1fr)"
-                                    }}
-                                    rowGap={3}
-                                >
-                                    <RHFTextField label="Discount" name="discount" />
-                                    <RHFSelect label="Tax Rate" name="taxRate" size="small" />
-                                    <RHFSelect label="Order Warehouse" name="warehouse" size="small" />
-                                </Box>
-                            </Stack>
+                        <Card>
+                            <CardContent>
+                                <Stack spacing={2}>
+                                    <Typography variant="subtitle1">
+                                        Customer
+                                    </Typography>
+                                    <Box
+                                        columnGap={2}
+                                        display="grid"
+                                        gridTemplateColumns={{
+                                            xs: "repeat(1, 1fr)",
+                                            md: "repeat(4, 1fr)"
+                                        }}
+                                        rowGap={3}
+                                    >
+                                        <RHFTextField label="Customer Code" name="customerCode" />
+                                        <RHFTextField label="Customer Name" name="customerName" />
+                                        <RHFTextField label="Customer Reference" name="customerRef" />
+                                    </Box>
+                                    <Box
+                                        columnGap={2}
+                                        display="grid"
+                                        gridTemplateColumns={{
+                                            xs: "repeat(1, 1fr)",
+                                            md: "repeat(4, 1fr)"
+                                        }}
+                                        rowGap={3}
+                                    >
+                                        <RHFTextField label="Discount" name="discount" />
+                                        <RHFSelect label="Tax Rate" name="taxRate" size="small" />
+                                        <RHFSelect label="Order Warehouse" name="warehouse" size="small" />
+                                    </Box>
+                                </Stack>
 
-                            <Stack spacing={2}>
-                                <Typography mt={2} variant="subtitle1">
-                                    Delivery
-                                </Typography>
-                                <Box
-                                    columnGap={2}
-                                    display="grid"
-                                    gridTemplateColumns={{
-                                        xs: "repeat(1, 1fr)",
-                                        md: "repeat(4, 1fr)"
-                                    }}
-                                    rowGap={3}
-                                >
-                                    <RHFSelect label="Delivery Contact" name="deliveryContact" size="small" />
-                                    <RHFTextField label="Delivery Name" name="deliveryName" />
-                                </Box>
-                                <Box
-                                    columnGap={2}
-                                    display="grid"
-                                    gridTemplateColumns={{
-                                        xs: "repeat(1, 1fr)",
-                                        md: "repeat(4, 1fr)"
-                                    }}
-                                    rowGap={3}
-                                >
-                                    <RHFTextField label="Address Line 1" name="addressLine1" />
-                                    <RHFTextField label="Address Line 2" name="addressLine2" />
-                                    <RHFTextField label="Suburb" name="suburb" />
-                                </Box>
-                                <Box
-                                    columnGap={2}
-                                    display="grid"
-                                    gridTemplateColumns={{
-                                        xs: "repeat(1, 1fr)",
-                                        md: "repeat(4, 1fr)"
-                                    }}
-                                    rowGap={3}
-                                >
-                                    <RHFTextField label="City" name="city" />
-                                    <RHFTextField label="State/Region" name="state" />
-                                    <RHFTextField label="Postcode" name="postcode" />
-                                    <RHFTextField label="County" name="county" />
-                                </Box>
-                            </Stack>
+                                <Stack spacing={2}>
+                                    <Typography mt={2} variant="subtitle1">
+                                        Delivery
+                                    </Typography>
+                                    <Box
+                                        columnGap={2}
+                                        display="grid"
+                                        gridTemplateColumns={{
+                                            xs: "repeat(1, 1fr)",
+                                            md: "repeat(4, 1fr)"
+                                        }}
+                                        rowGap={3}
+                                    >
+                                        <RHFSelect label="Delivery Contact" name="deliveryContact" size="small" />
+                                        <RHFTextField label="Delivery Name" name="deliveryName" />
+                                    </Box>
+                                    <Box
+                                        columnGap={2}
+                                        display="grid"
+                                        gridTemplateColumns={{
+                                            xs: "repeat(1, 1fr)",
+                                            md: "repeat(4, 1fr)"
+                                        }}
+                                        rowGap={3}
+                                    >
+                                        <RHFTextField label="Address Line 1" name="addressLine1" />
+                                        <RHFTextField label="Address Line 2" name="addressLine2" />
+                                        <RHFTextField label="Suburb" name="suburb" />
+                                    </Box>
+                                    <Box
+                                        columnGap={2}
+                                        display="grid"
+                                        gridTemplateColumns={{
+                                            xs: "repeat(1, 1fr)",
+                                            md: "repeat(4, 1fr)"
+                                        }}
+                                        rowGap={3}
+                                    >
+                                        <RHFTextField label="City" name="city" />
+                                        <RHFTextField label="State/Region" name="state" />
+                                        <RHFTextField label="Postcode" name="postcode" />
+                                        <RHFTextField label="County" name="county" />
+                                    </Box>
+                                </Stack>
 
-                            <Stack spacing={2}>
-                                <Typography mt={2} variant="subtitle1">
-                                    Order
-                                </Typography>
-                                <Box
-                                    columnGap={2}
-                                    display="grid"
-                                    gridTemplateColumns={{
-                                        xs: "repeat(1, 1fr)",
-                                        md: "repeat(4, 1fr)"
-                                    }}
-                                    rowGap={3}
-                                >
-                                    <RHFSelect label="Sales Person" name="salesPerson" size="small" />
-                                    <RHFSelect label="Sales Order Group" name="salesOrderGroup" size="small" />
-                                    <RHFDatePicker label="Order Date" name="orderDate" />
-                                    <RHFDatePicker label="Required Date" name="requiredDate" />
-                                </Box>
-                                <Box
-                                    columnGap={2}
-                                    display="grid"
-                                    gridTemplateColumns={{
-                                        xs: "repeat(1, 1fr)",
-                                        md: "repeat(4, 1fr)"
-                                    }}
-                                    rowGap={3}
-                                >
-                                    <RHFSelect label="Sales Order Template" name="salesOrderTemplate" size="small" />
-                                    <RHFSelect label="Packing Slip Template" name="packingSlipTemplate" size="small" />
-                                </Box>
-                            </Stack>
+                                <Stack spacing={2}>
+                                    <Typography mt={2} variant="subtitle1">
+                                        Order
+                                    </Typography>
+                                    <Box
+                                        columnGap={2}
+                                        display="grid"
+                                        gridTemplateColumns={{
+                                            xs: "repeat(1, 1fr)",
+                                            md: "repeat(4, 1fr)"
+                                        }}
+                                        rowGap={3}
+                                    >
+                                        <RHFSelect label="Sales Person" name="salesPerson" size="small" />
+                                        <RHFSelect label="Sales Order Group" name="salesOrderGroup" size="small" />
+                                        <RHFDatePicker label="Order Date" name="orderDate" />
+                                        <RHFDatePicker label="Required Date" name="requiredDate" />
+                                    </Box>
+                                    <Box
+                                        columnGap={2}
+                                        display="grid"
+                                        gridTemplateColumns={{
+                                            xs: "repeat(1, 1fr)",
+                                            md: "repeat(4, 1fr)"
+                                        }}
+                                        rowGap={3}
+                                    >
+                                        <RHFSelect
+                                            label="Sales Order Template"
+                                            name="salesOrderTemplate"
+                                            size="small"
+                                        />
+                                        <RHFSelect
+                                            label="Packing Slip Template"
+                                            name="packingSlipTemplate"
+                                            size="small"
+                                        />
+                                    </Box>
+                                </Stack>
 
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <Tabs
-                            onChange={onChangeTab}
-                            sx={{ px: 2 }}
-                            value={currentTab}
-                        >
-                            {
-                                tabs.map(tab =>
-                                    <Tab
-                                        key={tab}
-                                        label={tab}
-                                        value={tab}
-                                    />
-                                )
-                            }
-                        </Tabs>
-                        <CardContent>
-                            {
-                                currentTab === "Order Lines" &&
-                                <OrderLinesTab methods={methods} />
-                            }
-                        </CardContent>
-                    </Card>
+                            </CardContent>
+                        </Card>
+                        <Card>
+                            <Tabs
+                                onChange={onChangeTab}
+                                sx={{ px: 2 }}
+                                value={currentTab}
+                            >
+                                {
+                                    tabs.map(tab =>
+                                        <Tab
+                                            key={tab}
+                                            label={tab}
+                                            value={tab}
+                                        />
+                                    )
+                                }
+                            </Tabs>
+                            <CardContent>
+                                {
+                                    currentTab === "Order Lines" &&
+                                    <OrderLinesTab methods={methods} />
+                                }
+                            </CardContent>
+                        </Card>
+                    </Stack>
 
                 </FormProvider>
             </Container>
