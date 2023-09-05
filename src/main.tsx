@@ -1,22 +1,24 @@
 import { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+// Workaround for GitHub pages
+const RouterComponent = import.meta.env.PROD ? HashRouter : BrowserRouter;
 
 root.render(
     <HelmetProvider>
-        <BrowserRouter basename={import.meta.env.PROD ? "/ui" : undefined}>
+        <RouterComponent basename={import.meta.env.PROD ? "/ui" : undefined}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Suspense>
                     <App />
                 </Suspense>
             </LocalizationProvider>
-        </BrowserRouter>
+        </RouterComponent>
     </HelmetProvider>
 );
