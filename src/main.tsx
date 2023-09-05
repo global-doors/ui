@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
 root.render(
     <HelmetProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.PROD ? "/ui" : undefined}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <Suspense>
                     <App />
