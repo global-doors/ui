@@ -14,6 +14,7 @@ import { Iconify } from "src/components/iconify";
 import { PageHeader } from "src/components/page-header";
 import OrderLinesTab from "src/pages/dashboard/add-order/order-lines-tab";
 import paths from "src/routes/paths";
+import { AddSalesOrderForm } from "src/types/forms";
 
 const AddSalesOrder = () => {
     const defaultValues = {

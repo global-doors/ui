@@ -7,7 +7,7 @@ type RHFSelectProps = TextFieldProps & {
     name: string;
     native?: boolean;
     maxHeight?: boolean | number;
-    children: ReactNode;
+    children?: ReactNode;
     PaperPropsSx?: SxProps<Theme>;
 };
 
