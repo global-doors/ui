@@ -6,12 +6,12 @@ import { Iconify } from "src/components/iconify";
 const FullscreenButton = () => {
     const [fullscreen, setFullscreen] = useState(false);
 
-    const onToggleFullScreen = useCallback(() => {
+    const onToggleFullScreen = useCallback(async () => {
         if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
+            await document.documentElement.requestFullscreen();
             setFullscreen(true);
         } else if (document.exitFullscreen) {
-            document.exitFullscreen();
+            await document.exitFullscreen();
             setFullscreen(false);
         }
     }, []);
