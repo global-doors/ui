@@ -4,7 +4,7 @@ import { useTheme } from "@mui/material/styles";
 const StyledProgressBar = () => {
     const theme = useTheme();
 
-    const inputGlobalStyles = (
+    return (
         <GlobalStyles
             styles={{
                 "#nprogress": {
@@ -33,8 +33,6 @@ const StyledProgressBar = () => {
             }}
         />
     );
-
-    return inputGlobalStyles;
 };
 
 export default StyledProgressBar;

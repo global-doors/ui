@@ -1,6 +1,4 @@
-import {
-    useCallback, useEffect, useMemo, useState
-} from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useScroll } from "framer-motion";
 
 type ReturnType = boolean;
@@ -29,9 +27,7 @@ const useOffSetTop = (top = 0, options?: UseScrollOptions): ReturnType => {
         onOffSetTop();
     }, [onOffSetTop]);
 
-    const memoizedValue = useMemo(() => value, [value]);
-
-    return memoizedValue;
+    return useMemo(() => value, [value]);
 };
 
 export default useOffSetTop;
