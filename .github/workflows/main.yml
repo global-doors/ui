@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  VITE_API_URL: https://v07iyknsod.execute-api.eu-west-1.amazonaws.com/sandbox
+
 permissions:
   contents: write
 jobs:
