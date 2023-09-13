@@ -7,12 +7,11 @@ import Stack from "@mui/material/Stack";
 import { alpha, useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { m } from "framer-motion";
-import { useAuthContext } from "src/auth/hooks";
 import { varHover } from "src/components/animate";
 import { CustomPopover, usePopover } from "src/components/custom-popover";
 import { FullscreenButton } from "src/components/fullscreen-button";
 import { ThemeModeOptions } from "src/components/theme-mode-options";
-import useMockedUser from "src/hooks/use-mocked-user";
+import useAuthenticate from "src/hooks/useAuthenticate";
 import { useRouter } from "src/routes/hooks";
 import paths from "src/routes/paths";
 
@@ -32,15 +31,15 @@ const AccountPopover = () => {
 
     const router = useRouter();
 
-    const { user } = useMockedUser();
+    const { user } = useAuthenticate();
 
-    const { logout } = useAuthContext();
+    const { logout } = useAuthenticate();
 
     const popover = usePopover();
 
     const handleLogout = async () => {
         try {
-            await logout();
+            logout();
             popover.onClose();
             router.replace("/");
         } catch (error) {
@@ -74,7 +73,7 @@ const AccountPopover = () => {
                 whileTap="tap"
             >
                 <Avatar
-                    alt={user?.displayName}
+                    alt={user?.name}
                     sx={{
                         width: 36,
                         height: 36,
@@ -84,18 +83,18 @@ const AccountPopover = () => {
                         })
                     }}
                 >
-                    {user?.displayName.charAt(0).toUpperCase()}
+                    {user?.name?.charAt(0).toUpperCase()}
                 </Avatar>
             </IconButton>
 
             <CustomPopover onClose={popover.onClose} open={popover.open} sx={{ width: 200, p: 0 }}>
                 <Box sx={{ p: 2, pb: 1.5 }}>
                     <Typography noWrap variant="subtitle2">
-                        {user?.displayName}
+                        {user?.name}
                     </Typography>
 
                     <Typography noWrap sx={{ color: "text.secondary" }} variant="body2">
-                        {user?.email}
+                        {user?.name}
                     </Typography>
                 </Box>
 

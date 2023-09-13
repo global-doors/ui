@@ -28,7 +28,6 @@
     ]
   },
   "dependencies": {
-    "@auth0/auth0-react": "^2.2.1",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -45,6 +44,7 @@
     "dayjs": "^1.11.9",
     "framer-motion": "^10.16.2",
     "history": "^5.3.0",
+    "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
     "notistack": "^3.0.1",
     "nprogress": "^0.2.0",
@@ -66,6 +66,7 @@
     "@babel/core": "^7.22.11",
     "@babel/plugin-syntax-flow": "^7.22.5",
     "@babel/plugin-transform-react-jsx": "^7.22.5",
+    "@tanstack/react-query-devtools": "^4.35.3",
     "@types/autosuggest-highlight": "^3.2.0",
     "@types/lodash": "^4.14.197",
     "@types/node": "^20.5.7",

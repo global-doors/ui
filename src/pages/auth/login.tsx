@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,22 +9,21 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { useAuthContext } from "src/auth/hooks";
 import { FormProvider, RHFTextField } from "src/components/hook-form";
 import { Iconify } from "src/components/iconify";
 import { PATH_AFTER_LOGIN } from "src/config-global";
 import useBoolean from "src/hooks/use-boolean";
+import useAuthenticate from "src/hooks/useAuthenticate";
 import { RouterLink } from "src/routes/components";
 import { useRouter, useSearchParams } from "src/routes/hooks";
 import paths from "src/routes/paths";
+import { LoginForm } from "src/types/forms";
 import * as Yup from "yup";
 
 const LoginPage = () => {
-    const { login } = useAuthContext();
-
     const router = useRouter();
 
-    const [errorMsg, setErrorMsg] = useState("");
+    const [errorMsg] = useState("");
 
     const searchParams = useSearchParams();
 
@@ -32,14 +31,17 @@ const LoginPage = () => {
 
     const password = useBoolean();
 
-    const LoginSchema = Yup.object().shape({
-        email: Yup.string().required("Email is required").email("Email must be a valid email address"),
-        password: Yup.string().required("Password is required")
-    });
+    const LoginSchema = Yup.object()
+        .shape({
+            username: Yup.string()
+                .required("Username is required"),
+            password: Yup.string()
+                .required("Password is required")
+        });
 
     const defaultValues = {
-        email: "demo@demo.com",
-        password: "demo1234"
+        username: "",
+        password: ""
     };
 
     const methods = useForm({
@@ -49,22 +51,24 @@ const LoginPage = () => {
 
     const {
         reset,
-        handleSubmit,
-        formState: { isSubmitting }
+        handleSubmit
     } = methods;
 
-    const onSubmit = handleSubmit(async data => {
-        try {
-            await login?.(data.email, data.password);
+    const { login } = useAuthenticate();
+    const { mutate, isSuccess, isError, error, isLoading } = login;
+    const onSubmit = async (data: LoginForm) => mutate(data);
 
-            router.push(returnTo || PATH_AFTER_LOGIN);
-        } catch (error) {
-            // eslint-disable-next-line no-console
-            console.error(error);
-            reset();
-            setErrorMsg(typeof error === "string" ? error : error.message);
-        }
-    });
+    // On Log In Response
+    useEffect(
+        () => {
+            if (isSuccess) router.push(returnTo || PATH_AFTER_LOGIN);
+            if (isError) {
+                reset();
+                // setErrorMsg(typeof error === "string" ? error : error.message);
+            }
+        },
+        [error, isError, isSuccess, reset, returnTo, router]
+    );
 
     const renderHead = (
         <Stack spacing={2} sx={{ mb: 5 }}>
@@ -76,7 +80,7 @@ const LoginPage = () => {
         <Stack spacing={2.5} sx={{ minWidth: 320 }}>
             {!!errorMsg && <Alert severity="error">{errorMsg}</Alert>}
 
-            <RHFTextField fullWidth label="Email address" name="email" />
+            <RHFTextField fullWidth label="Username" name="username" />
 
             <RHFTextField
                 fullWidth
@@ -108,7 +112,7 @@ const LoginPage = () => {
             <LoadingButton
                 color="inherit"
                 fullWidth
-                loading={isSubmitting}
+                loading={isLoading}
                 size="large"
                 type="submit"
                 variant="contained"
@@ -121,10 +125,10 @@ const LoginPage = () => {
     return (
         <>
             <Helmet>
-                <title> Jwt: Login</title>
+                <title> Login</title>
             </Helmet>
 
-            <FormProvider methods={methods} onSubmit={onSubmit}>
+            <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                 {renderHead}
 
                 {renderForm}

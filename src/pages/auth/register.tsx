@@ -9,8 +9,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-// sections
-import { useAuthContext } from "src/auth/hooks";
 import { FormProvider, RHFTextField } from "src/components/hook-form";
 import { Iconify } from "src/components/iconify";
 import { PATH_AFTER_LOGIN } from "src/config-global";
@@ -21,7 +19,9 @@ import paths from "src/routes/paths";
 import * as Yup from "yup";
 
 const RegisterPage = () => {
-    const { register } = useAuthContext();
+    // const { register } = useAuthenticate();
+
+    const register = (email: string, password: string, firstName: string, lastName: string) => null;
 
     const router = useRouter();
 
@@ -151,7 +151,7 @@ const RegisterPage = () => {
     return (
         <>
             <Helmet>
-                <title> Jwt: Register</title>
+                <title> Register</title>
             </Helmet>
 
             <>

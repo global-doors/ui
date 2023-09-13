@@ -3,14 +3,11 @@ import { useCallback } from "react";
 import useLocalStorage from "./useLocalStorage";
 
 export type AccessTokenPayload = { // TODO: can we make this camelCase ?
-    user_id: number;
-    username: string;
-    firstname: string;
-    email: string;
-    session_id: string;
-    revoked: boolean;
-    date_added: string; // ISO
-    exp: number;
+    "userId": string,
+    "iat": number,
+    "name": string,
+    "exp": number
+
     "x-access-token": string;
     "x-token-life": number;
 };
