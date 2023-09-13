@@ -1,4 +1,5 @@
 import jwtDecode from "jwt-decode";
+import { AccessTokenPayload } from "src/hooks/useAccessToken";
 import paths from "src/routes/paths";
 import axios from "src/utils/axios";
 
@@ -7,7 +8,7 @@ export const isValidToken = (accessToken: string) => {
         return false;
     }
 
-    const decoded = jwtDecode(accessToken);
+    const decoded = jwtDecode<AccessTokenPayload>(accessToken);
 
     const currentTime = Date.now() / 1000;
 
