@@ -40,6 +40,10 @@ export type AddChargeForm = {
     taxRate: string;
     discount: string;
 };
+export type ResetPasswordForm = {
+    oldPassword: string;
+    newPassword: string;
+};
 
 export type AddSalesOrderForm = {
     customerCode: string;
