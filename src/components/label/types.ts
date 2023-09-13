@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { BoxProps } from "@mui/material/Box";
 
 export type LabelColor =
@@ -12,8 +13,8 @@ export type LabelColor =
 export type LabelVariant = "filled" | "outlined" | "soft";
 
 export interface LabelProps extends BoxProps {
-    startIcon?: React.ReactElement | null;
-    endIcon?: React.ReactElement | null;
+    startIcon?: ReactElement | null;
+    endIcon?: ReactElement | null;
     color?: LabelColor;
     variant?: LabelVariant;
 }

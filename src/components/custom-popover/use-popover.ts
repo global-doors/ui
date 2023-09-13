@@ -1,16 +1,16 @@
-import { useCallback, useState } from "react";
+import { Dispatch, MouseEvent, SetStateAction, useCallback, useState } from "react";
 
 type ReturnType = {
     onClose: VoidFunction;
     open: HTMLElement | null;
-    onOpen: (event: React.MouseEvent<HTMLElement>) => void;
-    setOpen: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+    onOpen: (event: MouseEvent<HTMLElement>) => void;
+    setOpen: Dispatch<SetStateAction<HTMLElement | null>>;
 };
 
 export default function usePopover(): ReturnType {
     const [open, setOpen] = useState<HTMLElement | null>(null);
 
-    const onOpen = useCallback((event: React.MouseEvent<HTMLElement>) => {
+    const onOpen = useCallback((event: MouseEvent<HTMLElement>) => {
         setOpen(event.currentTarget);
     }, []);
 

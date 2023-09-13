@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { ListItemButtonProps } from "@mui/material/ListItemButton";
 import { StackProps } from "@mui/material/Stack";
 
@@ -23,8 +24,8 @@ export type NavItemProps = ListItemButtonProps & {
 export type NavListProps = {
     title: string;
     path: string;
-    icon?: React.ReactElement;
-    info?: React.ReactElement;
+    icon?: ReactElement;
+    info?: ReactElement;
     caption?: string;
     disabled?: boolean;
     roles?: string[];

@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Box, { BoxProps } from "@mui/material/Box";
 import { m, MotionProps } from "framer-motion";
 import { useResponsive } from "src/hooks/use-responsive";
@@ -7,7 +8,7 @@ import { varContainer } from "./variants";
 type IProps = BoxProps & MotionProps;
 
 interface Props extends IProps {
-    children: React.ReactNode;
+    children: ReactNode;
     disableAnimatedMobile?: boolean;
 }
 

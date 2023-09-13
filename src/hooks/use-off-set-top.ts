@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { RefObject, useCallback, useEffect, useMemo, useState } from "react";
 import { useScroll } from "framer-motion";
 
 type ReturnType = boolean;
 
 interface UseScrollOptions extends Omit<ScrollOptions, "container" | "target"> {
-    container?: React.RefObject<HTMLElement>;
-    target?: React.RefObject<HTMLElement>;
+    container?: RefObject<HTMLElement>;
+    target?: RefObject<HTMLElement>;
 }
 
 const useOffSetTop = (top = 0, options?: UseScrollOptions): ReturnType => {

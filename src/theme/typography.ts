@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export function remToPx(value: string) {
     return Math.round(parseFloat(value) * 16);
 }
@@ -22,7 +24,7 @@ export function responsiveFontSizes({ sm, md, lg }: { sm: number; md: number; lg
 
 declare module "@mui/material/styles" {
     interface TypographyVariants {
-        fontWeightSemiBold: React.CSSProperties["fontWeight"];
+        fontWeightSemiBold: CSSProperties["fontWeight"];
     }
 }
 

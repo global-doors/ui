@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { Chip, InputLabel, OutlinedInput, Select, SelectProps } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -12,7 +13,7 @@ type RHFMultiSelectProps = SelectProps & {
     chip?: boolean;
     checkbox?: boolean;
     placeholder?: string;
-    helperText?: React.ReactNode;
+    helperText?: ReactNode;
     options: {
         label: string;
         value: string;

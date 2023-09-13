@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Container from "@mui/material/Container";
 import { SxProps, Theme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
@@ -9,7 +10,7 @@ import useMockedUser from "src/hooks/use-mocked-user";
 type RoleBasedGuardProp = {
     hasContent?: boolean;
     roles?: string[];
-    children: React.ReactNode;
+    children: ReactNode;
     sx?: SxProps<Theme>;
 };
 

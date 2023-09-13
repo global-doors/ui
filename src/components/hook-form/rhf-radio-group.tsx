@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -11,7 +12,7 @@ type Props = RadioGroupProps & {
     options: { label: string; value: any }[];
     label?: string;
     spacing?: number;
-    helperText?: React.ReactNode;
+    helperText?: ReactNode;
 };
 
 const RHFRadioGroup = ({

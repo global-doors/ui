@@ -1,5 +1,5 @@
+import { ReactNode } from "react";
 import { Controller, useFormContext } from "react-hook-form";
-// @mui
 import Checkbox from "@mui/material/Checkbox";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel, {
@@ -10,11 +10,9 @@ import FormGroup from "@mui/material/FormGroup";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 
-// ----------------------------------------------------------------------
-
 interface RHFCheckboxProps extends Omit<FormControlLabelProps, "control"> {
     name: string;
-    helperText?: React.ReactNode;
+    helperText?: ReactNode;
 }
 
 export const RHFCheckbox = ({ name, helperText, ...other }: RHFCheckboxProps) => {
@@ -37,15 +35,13 @@ export const RHFCheckbox = ({ name, helperText, ...other }: RHFCheckboxProps) =>
     );
 };
 
-// ----------------------------------------------------------------------
-
 interface RHFMultiCheckboxProps extends Omit<FormControlLabelProps, "control" | "label"> {
     name: string;
     options: { label: string; value: any }[];
     row?: boolean;
     label?: string;
     spacing?: number;
-    helperText?: React.ReactNode;
+    helperText?: ReactNode;
 }
 
 export const RHFMultiCheckbox = ({
