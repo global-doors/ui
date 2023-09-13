@@ -24,6 +24,17 @@ const card = (theme: Theme) => ({
                 padding: theme.spacing(3)
             }
         }
+    },
+    MuiCardActions: {
+        styleOverrides: {
+            root: {
+                display: "flex",
+                justifyContent: "flex-end",
+                paddingLeft: theme.spacing(3),
+                paddingRight: theme.spacing(3),
+                paddingBottom: theme.spacing(1.5)
+            }
+        }
     }
 });
 
