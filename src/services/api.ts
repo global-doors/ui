@@ -1,5 +1,4 @@
 import { POST } from "src/services/axios";
-import { LoginForm } from "src/types/forms";
 
 export type LoginResponse = {
     "unleashed_customer_code": number;
@@ -11,7 +10,22 @@ export type LoginResponse = {
 export const authenticate = async (
     username: string,
     password: string
-): Promise<LoginResponse> => POST<LoginForm, LoginResponse>(
+): Promise<LoginResponse> => POST(
     "/authenticate",
-    { username, password }
+    {
+        username,
+        password
+    }
+);
+
+export type ResetPasswordResponse = {
+    "unleashed_customer_code": string;
+    "username": string;
+};
+export const resetPassword = async (userId: string, oldPassword: string, newPassword: string): Promise<ResetPasswordResponse> => POST(
+    `/users/${userId}/reset-password`,
+    {
+        old_password: oldPassword,
+        Password: newPassword
+    }
 );
