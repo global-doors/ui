@@ -1,8 +1,6 @@
-const DetailsTab = () => {
-    return (
-        <>
-        </>
-    );
-};
+const DetailsTab = () => (
+    <>
+    </>
+);
 
 export default DetailsTab;

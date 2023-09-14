@@ -5,7 +5,6 @@ import Card from "@mui/material/Card";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import PasswordTab from "src/pages/dashboard/settings/password-tab";
-import DetailsTab from "src/pages/dashboard/settings/details-tab";
 
 const Settings = () => {
     const tabs = ["Password"];

@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { ResetPasswordForm } from "src/types/forms";
-import { FormProvider, RHFTextField } from "src/components/hook-form";
-import Stack from "@mui/material/Stack";
 import { CardActions, CardContent } from "@mui/material";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import { FormProvider, RHFTextField } from "src/components/hook-form";
+import { ResetPasswordForm } from "src/types/forms";
 
 const PasswordTab = () => {
     const defaultValues = {

@@ -1,6 +1,4 @@
-import IconButton from "@mui/material/IconButton";
-import { DataGrid, GridCellParams, GridColDef } from "@mui/x-data-grid";
-import { Iconify } from "src/components/iconify";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 const getColumns = (): GridColDef[] => [
     {

@@ -22,7 +22,11 @@ export type ResetPasswordResponse = {
     "unleashed_customer_code": string;
     "username": string;
 };
-export const resetPassword = async (userId: string, oldPassword: string, newPassword: string): Promise<ResetPasswordResponse> => POST(
+export const resetPassword = async (
+    userId: string,
+    oldPassword: string,
+    newPassword: string
+): Promise<ResetPasswordResponse> => POST(
     `/users/${userId}/reset-password`,
     {
         old_password: oldPassword,
