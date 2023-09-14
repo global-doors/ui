@@ -73,9 +73,9 @@ type SalesOrdersDatagridProps = {
 const SalesOrdersDatagrid = ({ data }: SalesOrdersDatagridProps) => (
     <DataGrid
         autoHeight
-        checkboxSelection
         columns={getColumns()}
         disableColumnMenu
+        disableRowSelectionOnClick
         getRowId={row => row.orderNumber}
         rows={data}
         sx={{ mx: -3 }}
