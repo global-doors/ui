@@ -32,7 +32,6 @@ const AccountPopover = () => {
     const router = useRouter();
 
     const { user } = useAuthenticate();
-
     const { logout } = useAuthenticate();
 
     const popover = usePopover();
@@ -73,7 +72,7 @@ const AccountPopover = () => {
                 whileTap="tap"
             >
                 <Avatar
-                    alt={user?.name}
+                    alt={user?.username}
                     sx={{
                         width: 36,
                         height: 36,
@@ -83,18 +82,18 @@ const AccountPopover = () => {
                         })
                     }}
                 >
-                    {user?.name?.charAt(0).toUpperCase()}
+                    {user?.username?.charAt(0).toUpperCase()}
                 </Avatar>
             </IconButton>
 
             <CustomPopover onClose={popover.onClose} open={popover.open} sx={{ width: 200, p: 0 }}>
                 <Box sx={{ p: 2, pb: 1.5 }}>
                     <Typography noWrap variant="subtitle2">
-                        {user?.name}
+                        {user?.user_id}
                     </Typography>
 
                     <Typography noWrap sx={{ color: "text.secondary" }} variant="body2">
-                        {user?.name}
+                        {user?.username}
                     </Typography>
                 </Box>
 

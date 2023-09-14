@@ -1,25 +1,24 @@
-import { useCallback } from "react";
-
-import useLocalStorage from "./useLocalStorage";
-
-export type AccessTokenPayload = { // TODO: can we make this camelCase ?
-    "userId": string,
-    "iat": number,
-    "name": string,
-    "exp": number
-
-    "x-access-token": string;
-    "x-token-life": number;
-};
+import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import paths from "src/routes/paths";
+import { setSession } from "src/utils/jwt";
 
 const useAccessToken = (): {
-    token: string | undefined,
+    token: string | null,
     setToken: (token: string) => void,
     revoke: VoidFunction
 } => {
-    const [value, setValue] = useLocalStorage<string>("access-token", "");
-    const revoke = useCallback(() => setValue(undefined), [setValue]);
-    return { token: value, setToken: setValue, revoke };
+    const value = useMemo(() => localStorage.getItem("accessToken"), []);
+    const navigate = useNavigate();
+    const revoke = () => {
+        setSession(null);
+        navigate(paths.auth.jwt.login);
+    };
+    return {
+        token: value,
+        setToken: setSession,
+        revoke
+    };
 };
 
 export default useAccessToken;

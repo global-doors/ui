@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useMemo, useState } from "react";
 import isEqual from "lodash/isEqual";
-import useLocalStorage from "src/hooks/useLocalStorage";
+import { useLocalStorage } from "src/hooks/use-local-storage";
 
 import { SettingsValueProps } from "../types";
 
@@ -14,7 +14,7 @@ type SettingsProviderProps = {
 };
 
 const SettingsProvider = ({ children, defaultSettings }: SettingsProviderProps) => {
-    const [state, update] = useLocalStorage(STORAGE_KEY, defaultSettings);
+    const { state, update, reset } = useLocalStorage(STORAGE_KEY, defaultSettings);
 
     const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -35,20 +35,13 @@ const SettingsProvider = ({ children, defaultSettings }: SettingsProviderProps) 
             onUpdate: update,
             // Reset
             canReset,
-            onReset: () => update(null),
+            onReset: reset,
             // Drawer
             open: openDrawer,
             onToggle: onToggleDrawer,
             onClose: onCloseDrawer
         }),
-        [
-            update,
-            state,
-            canReset,
-            openDrawer,
-            onCloseDrawer,
-            onToggleDrawer
-        ]
+        [state, update, canReset, reset, openDrawer, onToggleDrawer, onCloseDrawer]
     );
 
     return <SettingsContext.Provider value={memoizedValue}>{children}</SettingsContext.Provider>;
