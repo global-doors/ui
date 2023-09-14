@@ -8,8 +8,8 @@ import PasswordTab from "src/pages/dashboard/settings/password-tab";
 import DetailsTab from "src/pages/dashboard/settings/details-tab";
 
 const Settings = () => {
-    const tabs = ["Details", "Password"];
-    const [currentTab, setCurrentTab] = useState("Details");
+    const tabs = ["Password"];
+    const [currentTab, setCurrentTab] = useState("Password");
     const onChangeTab = (event: SyntheticEvent<Element, Event>, newValue: string) => setCurrentTab(newValue);
 
     return (
@@ -37,10 +37,6 @@ const Settings = () => {
                             )
                         }
                     </Tabs>
-                    {
-                        currentTab === "Details" &&
-                        <DetailsTab />
-                    }
                     {
                         currentTab === "Password" &&
                         <PasswordTab />
