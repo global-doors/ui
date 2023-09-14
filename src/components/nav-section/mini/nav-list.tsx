@@ -110,7 +110,7 @@ const NavList = ({
                             onMouseLeave: handleClose,
                             sx: {
                                 mt: 0.5,
-                                width: 160,
+                                width: 200,
                                 ...(open && {
                                     pointerEvents: "auto"
                                 })
