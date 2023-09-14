@@ -8,10 +8,10 @@ type ResetPasswordForm = {
     oldPassword: string;
     newPassword: string;
 };
-const useResetPassword = (userId: string): UseMutationResult<ResetPasswordResponse, AxiosError, ResetPasswordForm> => {
+const useResetPassword = (): UseMutationResult<ResetPasswordResponse, AxiosError, ResetPasswordForm> => {
     const { enqueueSnackbar } = useSnackbar();
     return useMutation(
-        (form: ResetPasswordForm) => resetPassword(userId, form.oldPassword, form.newPassword),
+        (form: ResetPasswordForm) => resetPassword(form.oldPassword, form.newPassword),
         useMutationOptions({
             onSuccess: async () => {
                 enqueueSnackbar("Password reset successfully.");

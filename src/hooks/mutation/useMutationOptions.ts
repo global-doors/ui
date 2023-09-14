@@ -18,7 +18,7 @@ const useMutationOptions = <T, V, C>(
                 revoke();
             } else if (httpStatus >= 400 && httpStatus < 500) {
                 enqueueSnackbar(
-                    error.response?.data.message ?? error.response?.data,
+                    error.response?.data.message ?? error.message,
                     { variant: "warning" }
                 );
             } else {

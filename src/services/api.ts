@@ -1,4 +1,4 @@
-import { POST } from "src/services/axios";
+import { POST, PUT } from "src/services/axios";
 
 export type LoginResponse = {
     "unleashed_customer_code": number;
@@ -23,13 +23,12 @@ export type ResetPasswordResponse = {
     "username": string;
 };
 export const resetPassword = async (
-    userId: string,
     oldPassword: string,
     newPassword: string
-): Promise<ResetPasswordResponse> => POST(
-    `/users/${userId}/reset-password`,
+): Promise<ResetPasswordResponse> => PUT(
+    "/user/reset-password",
     {
         old_password: oldPassword,
-        Password: newPassword
+        new_password: newPassword
     }
 );

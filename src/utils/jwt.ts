@@ -1,7 +1,7 @@
 import jwtDecode from "jwt-decode";
 import paths from "src/routes/paths";
 import { AccessTokenPayload } from "src/types/api";
-import axios from "src/utils/axios";
+import axiosInstance from "src/utils/axios";
 
 export const isValidToken = (accessToken: string) => {
     if (!accessToken) {
@@ -40,7 +40,7 @@ export const setSession = (accessToken: string | null) => {
     if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
 
-        axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+        axiosInstance.defaults.headers.common["x-access-token"] = accessToken;
 
         // This function below will handle when token is expired
         const { exp } = jwtDecode<AccessTokenPayload>(accessToken); // ~3 days
@@ -48,6 +48,6 @@ export const setSession = (accessToken: string | null) => {
     } else {
         localStorage.removeItem("accessToken");
 
-        delete axios.defaults.headers.common.Authorization;
+        delete axiosInstance.defaults.headers.common.Authorization;
     }
 };

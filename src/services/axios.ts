@@ -1,14 +1,15 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
+import axiosInstance from "src/utils/axios";
 
 export const serverUrl = import.meta.env.VITE_API_URL;
 
 const headers = <T>(
-    accessToken: string = "",
+    // accessToken: string = "",
     contentType: string = "application/json",
     accept: string = "application/json"
 ): AxiosRequestConfig<T> => ({
     headers: {
-        "x-access-token": accessToken,
+        // "x-access-token": accessToken,
         "Content-Type": contentType,
         accept
     }
@@ -20,9 +21,9 @@ export const GET = async <T>(
     contentType?: string,
     config?: AxiosRequestConfig
 ): Promise<T> => {
-    const response = await axios.get(`${path}`, {
+    const response = await axiosInstance.get(`${path}`, {
         baseURL: serverUrl,
-        ...headers(accessToken, contentType, accept),
+        ...headers(contentType, accept),
         ...config
     });
     return response.data;
@@ -36,9 +37,9 @@ export const POST = async <B, T>(
     contentType?: string,
     config?: AxiosRequestConfig
 ): Promise<T> => {
-    const response = await axios.post(`${path}`, data, {
+    const response = await axiosInstance.post(`${path}`, data, {
         baseURL: serverUrl,
-        ...headers(accessToken, contentType, accept),
+        ...headers(contentType, accept),
         ...config
     });
     return response.data;
@@ -52,9 +53,9 @@ export const PUT = async <B, T>(
     contentType?: string,
     config?: AxiosRequestConfig
 ): Promise<T> => {
-    const response = await axios.put(`${path}`, data, {
+    const response = await axiosInstance.put(`${path}`, data, {
         baseURL: serverUrl,
-        ...headers(accessToken, contentType, accept),
+        ...headers(contentType, accept),
         ...config
     });
     return response.data;
@@ -67,9 +68,9 @@ export const DELETE = async <T>(
     contentType?: string,
     config?: AxiosRequestConfig
 ): Promise<T> => {
-    const response = await axios.delete(`${path}`, {
+    const response = await axiosInstance.delete(`${path}`, {
         baseURL: serverUrl,
-        ...headers(accessToken, contentType, accept),
+        ...headers(contentType, accept),
         ...config
     });
     return response.data;
