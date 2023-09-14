@@ -83,9 +83,6 @@ const Index = () => {
                 <PageHeader
                     action={
                         <Stack direction="row" spacing={1}>
-                            <Button startIcon={<Iconify icon="solar:import-line-duotone" />} variant="outlined">
-                                Import
-                            </Button>
                             <Button startIcon={<Iconify icon="solar:export-line-duotone" />} variant="outlined">
                                 Export
                             </Button>
