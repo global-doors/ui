@@ -68,7 +68,7 @@ const Index = () => {
         [watchForm]
     );
 
-    const [showFilters, setShowFilters] = useState<boolean>(false);
+    const [showFilters, setShowFilters] = useState<boolean>(true);
     const toggleFilters = () => setShowFilters(!showFilters);
 
     const navigate = useNavigate();
