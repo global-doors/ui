@@ -51,20 +51,20 @@ const getColumns = (): GridColDef[] => [
         field: "subtotal",
         headerName: "Subtotal",
         disableColumnMenu: true
-    },
-    {
-        field: "actions",
-        width: 40,
-        sortable: false,
-        filterable: false,
-        disableColumnMenu: true,
-        renderHeader: () => null,
-        renderCell: (params: GridCellParams) => (
-            <IconButton>
-                <Iconify icon="solar:menu-dots-square-line-duotone" />
-            </IconButton>
-        )
     }
+    // {
+    //     field: "actions",
+    //     width: 40,
+    //     sortable: false,
+    //     filterable: false,
+    //     disableColumnMenu: true,
+    //     renderHeader: () => null,
+    //     renderCell: (params: GridCellParams) => (
+    //         <IconButton>
+    //             <Iconify icon="solar:menu-dots-square-line-duotone" />
+    //         </IconButton>
+    //     )
+    // }
 ];
 
 type SalesOrdersDatagridProps = {
