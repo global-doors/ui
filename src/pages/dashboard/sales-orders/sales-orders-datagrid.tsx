@@ -9,26 +9,26 @@ const getColumns = (): GridColDef[] => [
         field: "orderDate",
         headerName: "Order Date"
     },
-    {
-        field: "requiredDate",
-        headerName: "Order Date"
-    },
-    {
-        field: "customerCode",
-        headerName: "Customer Code"
-    },
-    {
-        field: "customerName",
-        headerName: "Customer Name"
-    },
-    {
-        field: "customerRef",
-        headerName: "Customer Ref"
-    },
-    {
-        field: "warehouse",
-        headerName: "Warehouse"
-    },
+    // {
+    //     field: "requiredDate",
+    //     headerName: "Order Date"
+    // },
+    // {
+    //     field: "customerCode",
+    //     headerName: "Customer Code"
+    // },
+    // {
+    //     field: "customerName",
+    //     headerName: "Customer Name"
+    // },
+    // {
+    //     field: "customerRef",
+    //     headerName: "Customer Ref"
+    // },
+    // {
+    //     field: "warehouse",
+    //     headerName: "Warehouse"
+    // },
     {
         field: "orderStatus",
         headerName: "Status"
@@ -40,16 +40,16 @@ const getColumns = (): GridColDef[] => [
     {
         field: "cost",
         headerName: "Cost"
-    },
-    {
-        field: "margin",
-        headerName: "Margin"
-    },
-    {
-        field: "subtotal",
-        headerName: "Subtotal",
-        disableColumnMenu: true
     }
+    // {
+    //     field: "margin",
+    //     headerName: "Margin"
+    // },
+    // {
+    //     field: "subtotal",
+    //     headerName: "Subtotal",
+    //     disableColumnMenu: true
+    // }
     // {
     //     field: "actions",
     //     width: 40,
