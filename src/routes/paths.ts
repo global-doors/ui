@@ -17,7 +17,8 @@ const paths = {
         settings: `${ROOTS.DASHBOARD}/settings`,
         sales: {
             root: `${ROOTS.DASHBOARD}/sales`,
-            addOrder: `${ROOTS.DASHBOARD}/sales/add-order`
+            addOrder: `${ROOTS.DASHBOARD}/sales/add-order`,
+            order: (id: string) => `${ROOTS.DASHBOARD}/sales/order/${id}`
         }
     }
 };

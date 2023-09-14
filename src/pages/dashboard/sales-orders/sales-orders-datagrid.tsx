@@ -1,4 +1,6 @@
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
+import { DataGrid, GridColDef, GridEventListener } from "@mui/x-data-grid";
+import paths from "src/routes/paths";
 
 const getColumns = (): GridColDef[] => [
     {
@@ -68,16 +70,31 @@ const getColumns = (): GridColDef[] => [
 type SalesOrdersDatagridProps = {
     data: any;
 };
-const SalesOrdersDatagrid = ({ data }: SalesOrdersDatagridProps) => (
-    <DataGrid
-        autoHeight
-        columns={getColumns()}
-        disableColumnMenu
-        disableRowSelectionOnClick
-        getRowId={row => row.orderNumber}
-        rows={data}
-        sx={{ mx: -3 }}
-    />
-);
+const SalesOrdersDatagrid = ({ data }: SalesOrdersDatagridProps) => {
+    const navigate = useNavigate();
+    const handleRowClick: GridEventListener<"rowClick"> = params => {
+        const orderId = params.row.orderNumber;
+        const page = paths.dashboard.sales.order;
+        navigate(page(orderId));
+    };
+
+    return (
+        <DataGrid
+            autoHeight
+            columns={getColumns()}
+            disableColumnMenu
+            disableRowSelectionOnClick
+            getRowId={row => row.orderNumber}
+            onRowClick={handleRowClick}
+            rows={data}
+            sx={{
+                mx: -3,
+                "& .MuiDataGrid-row": {
+                    cursor: "pointer"
+                }
+            }}
+        />
+    );
+};
 
 export default SalesOrdersDatagrid;

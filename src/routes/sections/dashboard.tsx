@@ -3,6 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { AuthGuard } from "src/auth/guard";
 import { LoadingScreen } from "src/components/loading-screen";
 import { DashboardLayout } from "src/layouts/dashboard";
+import SingleOrder from "src/pages/dashboard/single-order";
 
 const SettingsPage = lazy(() => import("src/pages/dashboard/settings"));
 const SalesOrders = lazy(() => import("src/pages/dashboard/sales-orders"));
@@ -27,7 +28,8 @@ const dashboardRoutes = [
                 path: "sales",
                 children: [
                     { element: <SalesOrders />, index: true },
-                    { path: "add-order", element: <AddOrder /> }
+                    { path: "add-order", element: <AddOrder /> },
+                    { path: "order/:id", element: <SingleOrder /> }
                 ]
             }
         ]
