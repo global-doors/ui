@@ -33,12 +33,12 @@ const useNavData = () => useMemo(
                     icon: icon("solar:graph-up-line-duotone"),
                     children: [
                         {
-                            title: "view sales",
+                            title: "your orders",
                             path: paths.dashboard.sales.root,
                             icon: icon("solar:chart-square-line-duotone")
                         },
                         {
-                            title: "add order",
+                            title: "place new order",
                             path: paths.dashboard.sales.addOrder,
                             icon: icon("solar:add-square-line-duotone")
                         }
