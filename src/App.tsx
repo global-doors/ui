@@ -2,6 +2,7 @@ import { MotionLazy } from "src/components/animate/motion-lazy";
 import { ProgressBar } from "src/components/progress-bar";
 import { SettingsProvider } from "src/components/settings";
 import useScrollToTop from "src/hooks/use-scroll-to-top";
+import AuthProvider from "src/providers/AuthProvider";
 import NotistackProvider from "src/providers/NotistackProvider";
 import QueryProvider from "src/providers/QueryProvider";
 import Router from "src/routes/sections";
@@ -25,7 +26,9 @@ const App = () => {
                     <ThemeProvider>
                         <MotionLazy>
                             <ProgressBar />
-                            <Router />
+                            <AuthProvider>
+                                <Router />
+                            </AuthProvider>
                         </MotionLazy>
                     </ThemeProvider>
                 </QueryProvider>
