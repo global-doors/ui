@@ -26,7 +26,7 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
         const logo = (
             <Box
                 component="img"
-                src="/logo/GD-logo.png"
+                src={`${import.meta.env.BASE_URL}logo/GD-logo.png`}
                 sx={{
                     width: 60,
                     // height: 40,
