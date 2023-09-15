@@ -19,6 +19,7 @@ import { useRouter, useSearchParams } from "src/routes/hooks";
 import paths from "src/routes/paths";
 import { LoginForm } from "src/types/forms";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
     const router = useRouter();
@@ -58,10 +59,12 @@ const LoginPage = () => {
     const { mutate, isSuccess, isError, error, isLoading } = login;
     const onSubmit = async (data: LoginForm) => mutate(data);
 
+    const navigate = useNavigate();
+
     // On Log In Response
     useEffect(
         () => {
-            if (isSuccess) router.push(returnTo || PATH_AFTER_LOGIN);
+            if (isSuccess) navigate(returnTo || PATH_AFTER_LOGIN);
             if (isError) {
                 reset();
                 // setErrorMsg(typeof error === "string" ? error : error.message);
