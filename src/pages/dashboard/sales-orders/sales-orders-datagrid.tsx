@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { DataGrid, GridColDef, GridEventListener } from "@mui/x-data-grid";
+import { DataGrid, DataGridProps, GridColDef, GridEventListener } from "@mui/x-data-grid";
 import paths from "src/routes/paths";
+import { SalesOrder } from "src/types/api";
 
 const getColumns = (): GridColDef[] => [
     {
-        field: "orderNumber",
+        field: "OrderNumber",
         headerName: "Order No."
     },
     {
-        field: "orderDate",
+        field: "OrderDate",
         headerName: "Order Date"
     },
     // {
@@ -32,16 +33,18 @@ const getColumns = (): GridColDef[] => [
     //     headerName: "Warehouse"
     // },
     {
-        field: "orderStatus",
+        field: "OrderStatus",
         headerName: "Status"
     },
     {
-        field: "currency",
-        headerName: "Currency"
+        field: "CurrencyCode",
+        headerName: "Currency",
+        valueGetter: params => params.row?.Currency?.CurrencyCode
     },
     {
         field: "cost",
-        headerName: "Cost"
+        headerName: "Cost",
+        valueGetter: () => "TODO"
     }
     // {
     //     field: "margin",
@@ -67,25 +70,33 @@ const getColumns = (): GridColDef[] => [
     // }
 ];
 
-type SalesOrdersDatagridProps = {
-    data: any;
+type SalesOrdersDatagridProps = Omit<DataGridProps, "columns" | "rows"> & {
+    data: SalesOrder[];
+    loading?: boolean;
 };
-const SalesOrdersDatagrid = ({ data }: SalesOrdersDatagridProps) => {
+const SalesOrdersDatagrid = ({
+    data,
+    loading = false,
+    ...other
+}: SalesOrdersDatagridProps) => {
     const navigate = useNavigate();
     const handleRowClick: GridEventListener<"rowClick"> = params => {
-        const orderId = params.row.orderNumber;
+        const orderId = params.row.OrderNumber;
         const page = paths.dashboard.sales.order;
         navigate(page(orderId));
     };
 
     return (
         <DataGrid
+            {...other}
             autoHeight
             columns={getColumns()}
             disableColumnMenu
             disableRowSelectionOnClick
-            getRowId={row => row.orderNumber}
+            getRowId={row => row.OrderNumber}
+            loading={loading}
             onRowClick={handleRowClick}
+            paginationMode="server"
             rows={data}
             sx={{
                 mx: -3,

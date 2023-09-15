@@ -1,35 +1,17 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, CardContent, CardHeader, Container, IconButton, Stack } from "@mui/material";
 import { Iconify } from "src/components/iconify";
 import { PageHeader } from "src/components/page-header";
+import useSalesOrders from "src/hooks/query/useSalesOrders";
 import SalesOrdersDatagrid from "src/pages/dashboard/sales-orders/sales-orders-datagrid";
 import SalesOrdersFilters from "src/pages/dashboard/sales-orders/sales-orders-filters";
 import paths from "src/routes/paths";
 import { SalesOrderFilterForm } from "src/types/forms";
 
-const TEST_DATA = [
-    {
-        orderNumber: "1234",
-        orderDate: new Date(),
-        requiredDate: new Date(),
-        customerCode: "CMS001",
-        customerName: "Customer 1",
-        customerRef: "REF1234567",
-        warehouse: "Warehouse",
-        orderStatus: "placed",
-        currency: "GBP",
-        cost: 1234,
-        margin: "5%",
-        subtotal: "5.99",
-        deliveryMethod: "royalMail",
-        printed: "yes"
-    }
-];
-
-const Index = () => {
+const SalesOrders = () => {
     const defaultValues = {
         orderStatus: [],
         customerName: "",
@@ -46,32 +28,61 @@ const Index = () => {
         mode: "onChange"
     });
 
-    const watchForm = methods.watch();
-    const filteredData = useMemo(
-        () => {
-            let filtered = TEST_DATA.slice();
-            if (watchForm.orderStatus.length) {
-                filtered = filtered.filter(item => watchForm.orderStatus.includes(item.orderStatus));
-            }
-            if (watchForm.warehouse.length) {
-                filtered = filtered.filter(item => watchForm.warehouse.includes(item.warehouse));
-            }
-            if (watchForm.deliveryMethod.length) {
-                filtered = filtered.filter(item => watchForm.deliveryMethod.includes(item.deliveryMethod));
-            }
-            if (watchForm.printed.length) {
-                filtered = filtered.filter(item => watchForm.printed.includes(item.printed));
-            }
-
-            return filtered;
-        },
-        [watchForm]
-    );
-
     const [showFilters, setShowFilters] = useState<boolean>(true);
     const toggleFilters = () => setShowFilters(!showFilters);
 
     const navigate = useNavigate();
+
+    const [paginationModel, setPaginationModel] = useState({
+        page: 0,
+        pageSize: 5
+    });
+
+    const {
+        data,
+        isLoading
+    } = useSalesOrders({
+        page: paginationModel.page + 1,
+        pageSize: paginationModel.pageSize
+    });
+    const orders = data?.Items;
+    const pagination = data?.Pagination;
+
+    const watchForm = methods.watch();
+    const filteredData = useMemo(
+        () => {
+            let filtered = (orders ?? []).slice();
+            if (watchForm.orderStatus.length) {
+                filtered = filtered.filter(item => watchForm.orderStatus.includes(item.OrderStatus));
+            }
+            // if (watchForm.warehouse.length) {
+            //     filtered = filtered.filter(item => watchForm.warehouse.includes(item.warehouse));
+            // }
+            // if (watchForm.deliveryMethod.length) {
+            //     filtered = filtered.filter(item => watchForm.deliveryMethod.includes(item.deliveryMethod));
+            // }
+            // if (watchForm.printed.length) {
+            //     filtered = filtered.filter(item => watchForm.printed.includes(item.printed));
+            // }
+
+            return filtered;
+        },
+        [orders, watchForm.orderStatus]
+    );
+
+    // Some API clients return undefined while loading
+    // Following lines are here to prevent `rowCountState` from being undefined during the loading
+    const [rowCountState, setRowCountState] = useState(
+        pagination?.PageSize || 0
+    );
+    useEffect(() => {
+        setRowCountState(prevRowCountState => (
+            pagination?.NumberOfItems !== undefined
+                ? pagination?.NumberOfItems
+                : prevRowCountState
+        ));
+    }, [pagination?.NumberOfItems, setRowCountState]);
+
     return (
 
         <>
@@ -97,11 +108,17 @@ const Index = () => {
                     }
                     heading="View Sales Orders"
                     links={[
-                        { name: "Sales", href: paths.dashboard.root },
+                        {
+                            name: "Sales",
+                            href: paths.dashboard.root
+                        },
                         { name: "View Sales Orders" }
                     ]}
                     sx={{
-                        mb: { xs: 3, md: 5 }
+                        mb: {
+                            xs: 3,
+                            md: 5
+                        }
                     }}
                 />
 
@@ -121,7 +138,14 @@ const Index = () => {
                             resultsCount={filteredData.length}
                             showFilters={showFilters}
                         />
-                        <SalesOrdersDatagrid data={filteredData} />
+                        <SalesOrdersDatagrid
+                            data={filteredData}
+                            loading={isLoading}
+                            onPaginationModelChange={setPaginationModel}
+                            paginationMode="server"
+                            paginationModel={paginationModel}
+                            rowCount={rowCountState}
+                        />
                     </CardContent>
                 </Card>
             </Container>
@@ -129,4 +153,4 @@ const Index = () => {
     );
 };
 
-export default Index;
+export default SalesOrders;

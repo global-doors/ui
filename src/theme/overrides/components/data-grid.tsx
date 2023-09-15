@@ -13,7 +13,8 @@ const dataGrid = (theme: Theme) => {
     return {
         MuiDataGrid: {
             defaultProps: {
-                density: "compact"
+                density: "compact",
+                rowsPerPageOptions: [5, 25, 50]
             },
             styleOverrides: {
                 root: {

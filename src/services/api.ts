@@ -1,4 +1,5 @@
-import { POST, PUT } from "src/services/axios";
+import { GET, POST, PUT } from "src/services/axios";
+import { Paginated, PaginationModel, SalesOrder } from "src/types/api";
 
 export type LoginResponse = {
     "unleashed_customer_code": number;
@@ -32,3 +33,6 @@ export const resetPassword = async (
         new_password: newPassword
     }
 );
+
+export const fetchSalesOrders = async (paginationModel: PaginationModel): Promise<Paginated<SalesOrder>> =>
+    GET(`user/sales-orders?page=${paginationModel.page}&pageSize=${paginationModel.pageSize}`);
