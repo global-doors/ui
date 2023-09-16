@@ -26,7 +26,8 @@ const KeyValueData = ({
 const SingleOrder = () => {
     const params = useParams<{ id: string }>();
     const { data } = useSingleOrder(params.id);
-    console.log(data);
+    console.log(data?.Items?.[0]);
+    const order = data?.Items?.[0];
     return (
         <>
             <Helmet>
@@ -35,7 +36,7 @@ const SingleOrder = () => {
 
             <Container maxWidth="xl">
                 <PageHeader
-                    heading={`Sales Order: ${data?.OrderNumber}`}
+                    heading={`Sales Order: ${order?.OrderNumber}`}
                     links={[
                         {
                             name: "Sales",
@@ -56,10 +57,10 @@ const SingleOrder = () => {
                     <CardContent>
                         <Grid2 container>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Customer Name" value={data?.Customer.CustomerName} />
+                                <KeyValueData label="Customer Name" value={order?.Customer.CustomerName} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Customer Code" value={data?.Customer.CustomerCode} />
+                                <KeyValueData label="Customer Code" value={order?.Customer.CustomerCode} />
                             </Grid2>
                         </Grid2>
                     </CardContent>
@@ -67,26 +68,26 @@ const SingleOrder = () => {
                     <CardContent>
                         <Grid2 container>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Delivery Contact" value={data?.DeliveryContact as string} />
+                                <KeyValueData label="Delivery Contact" value={order?.DeliveryContact as string} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Delivery Name" value={data?.DeliveryName} />
+                                <KeyValueData label="Delivery Name" value={order?.DeliveryName} />
                             </Grid2>
                             <Grid2 sm={6} xs={0} />
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Delivery Street Address" value={data?.DeliveryStreetAddress} />
+                                <KeyValueData label="Delivery Street Address" value={order?.DeliveryStreetAddress} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Delivery Suburb" value={data?.DeliverySuburb} />
+                                <KeyValueData label="Delivery Suburb" value={order?.DeliverySuburb} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Delivery City" value={data?.DeliveryCity} />
+                                <KeyValueData label="Delivery City" value={order?.DeliveryCity} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Delivery Postcode" value={data?.DeliveryPostCode} />
+                                <KeyValueData label="Delivery Postcode" value={order?.DeliveryPostCode} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Delivery Country" value={data?.DeliveryCountry} />
+                                <KeyValueData label="Delivery Country" value={order?.DeliveryCountry} />
                             </Grid2>
                         </Grid2>
                     </CardContent>
@@ -94,16 +95,16 @@ const SingleOrder = () => {
                     <CardContent>
                         <Grid2 container>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Sales Person" value={data?.SalesPerson.FullName} />
+                                <KeyValueData label="Sales Person" value={order?.SalesPerson.FullName} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Sales Order Group" value={data?.SalesOrderGroup as string} />
+                                <KeyValueData label="Sales Order Group" value={order?.SalesOrderGroup as string} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Order Date" value={data?.OrderDate as string} />
+                                <KeyValueData label="Order Date" value={order?.OrderDate as string} />
                             </Grid2>
                             <Grid2 sm={3} xs={12}>
-                                <KeyValueData label="Required Date" value={data?.RequiredDate as string} />
+                                <KeyValueData label="Required Date" value={order?.RequiredDate as string} />
                             </Grid2>
                         </Grid2>
                     </CardContent>
