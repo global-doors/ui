@@ -24,6 +24,7 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
         // OR using local (public folder)
         // -------------------------------------------------------
         const logoUrl = import.meta.env.prod ? `${import.meta.env.BASE_URL}/logo/GD-logo.png` : "/logo/GD-logo.png";
+        console.log(logoUrl);
         const logo = (
             <Box
                 component="img"
