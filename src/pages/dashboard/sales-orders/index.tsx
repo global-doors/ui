@@ -94,9 +94,9 @@ const SalesOrders = () => {
                 <PageHeader
                     action={
                         <Stack direction="row" spacing={1}>
-                            <Button startIcon={<Iconify icon="solar:export-line-duotone" />} variant="outlined">
-                                Export
-                            </Button>
+                            {/* <Button startIcon={<Iconify icon="solar:export-line-duotone" />} variant="outlined"> */}
+                            {/*     Export */}
+                            {/* </Button> */}
                             <Button
                                 onClick={() => navigate("/dashboard/sales/add-order")}
                                 startIcon={<Iconify icon="solar:add-square-line-duotone" />}
