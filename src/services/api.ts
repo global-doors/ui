@@ -35,7 +35,7 @@ export const resetPassword = async (
 );
 
 export const fetchSalesOrders = async (paginationModel: PaginationModel): Promise<Paginated<SalesOrder>> =>
-    GET(`user/sales-orders?page=${paginationModel.page}&pageSize=${paginationModel.pageSize}`);
+    GET(`user/sales-orders?page=${paginationModel.page}&page_size=${paginationModel.pageSize}`);
 
 export const fetchSingleOrder = async (orderNumber?: string): Promise<Paginated<SalesOrder>> =>
     GET(`user/sales-orders/${orderNumber}`);
